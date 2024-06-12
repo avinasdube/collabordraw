@@ -1,0 +1,41 @@
+name: CI Jobs
+
+on:
+#    push:
+#       branches: [dev]
+    pull_request:
+        branches: [dev, main]
+
+jobs:
+    build:
+
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [18.x]
+            
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: Setup Node.js ${{matrix.node-version}}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{matrix.node-version}}
+
+        - name: Install dependencies
+          run: |
+            cd $GITHUB_WORKSPACE/client
+            npm install
+        
+        # - name: Run the tests
+        #   run: |
+        #     cd $GITHUB_WORKSPACE/sa-client
+        #     npm test
+
+        - name: Build
+          run: |
+           cd $GITHUB_WORKSPACE/client
+           npm run build
+        
