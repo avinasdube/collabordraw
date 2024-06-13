@@ -1,4 +1,11 @@
 .App {
-  text-align: center;
+  background-color: black;
+  height: 100vh;
+  color: wheat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 20px;
 }
 
