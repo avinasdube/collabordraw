@@ -1,0 +1,26 @@
+// FONTS
+
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600&display=swap');
+
+$bodyFont: 'Gabarito', sans-serif;
+
+// COLOR SCHEMES
+
+$mainBg: #C6D0BF;
+$subMainBg: #E1E3E3;
+$cardWhite: #FFFFFF;
+$accentColor: #5C8331;
+$bgAccent: #161e16;
+$fontColor: #0a0f0c;
+
+// SPACING
+
+$spacingSmall: 8px;
+$spacingMedium: 16px;
+$spacingLarge: 24px;
+
+// BREAKPOINTS
+
+$mobileBreakpoint: 480px;
+$tabletBreakpoint: 768px;
+$desktopBreakpoint: 1024px;
