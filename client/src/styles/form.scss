@@ -50,5 +50,16 @@
                 background-color: #006aff;
             }
         }
+
+        .message{
+            font-size: 12px;
+            font-weight: 400;
+            text-align: center;
+
+            .hyperlink{
+                text-decoration: none;
+                color: $accentColor;
+            }
+        }
     }
 }

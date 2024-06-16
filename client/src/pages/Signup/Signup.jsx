@@ -1,6 +1,7 @@
 import React from "react";
 import '../../styles/form.scss';
 import Logo from "../../components/Logo/Logo";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
     return (
@@ -18,6 +19,9 @@ const Signup = () => {
                 <input type="password" placeholder="Enter password"></input>
                 <input type="password" placeholder="Confirm passward"></input>
                 <button>Signup</button>
+                <div className="message">
+                    Already signed up ? Click here to <Link to={'/login'} className="hyperlink">Login</Link>.
+                </div>
             </form>
         </div>
     )
