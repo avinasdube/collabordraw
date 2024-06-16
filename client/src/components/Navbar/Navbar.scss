@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacingSmall;
+    padding: 1rem;
+}
