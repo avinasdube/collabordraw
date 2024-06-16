@@ -1,8 +1,17 @@
 import React from "react";
+import Logo from "../Logo/Logo";
+import './Navbar.scss';
 
 const Navbar = () => {
     return (
-        <div>Navbar</div>
+        <div className="navbar-container">
+            <div className="nav-left">
+                <Logo />
+            </div>
+            <div className="nav-right">
+                Nav right
+            </div>
+        </div>
     )
 }
 

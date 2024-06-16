@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+.logo-container{
+    .logo-icon{
+        width: 30px;
+        height: 30px;
+
+        &:hover{
+            transition: 0.3s linear;
+            transform: scale(1.1);
+        }
+    }
+}

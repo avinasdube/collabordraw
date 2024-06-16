@@ -1,0 +1,54 @@
+@import './variables';
+
+.form-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    form {
+        padding: 1rem;
+        outline: 2px solid $accentColor;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: $spacingSmall;
+
+        .form-head{
+            display: flex;
+            align-items: center;
+            gap: $spacingMedium;
+            margin-bottom: $spacingSmall;
+
+            .form-heading{
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        input {
+            background-color: whitesmoke;
+            outline: none;
+            border: none;
+            padding: $spacingSmall 1rem;
+            border-radius: 16px;
+            font-family: $bodyFont;
+            width: 240px;
+        }
+
+        button {
+            margin-top: $spacingSmall;
+            background-color: $accentColor;
+            outline: none;
+            border-radius: 16px;
+            border: none;
+            color: whitesmoke;
+            padding: 0.8rem;
+            font-size: 16px;
+            font-weight:600;
+            &:hover{
+                background-color: #006aff;
+            }
+        }
+    }
+}
