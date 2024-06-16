@@ -4,7 +4,6 @@ import {
 } from 'react-router-dom';
 import React from 'react';
 
-import './App.css';
 import Layout from './layout/AppLayout';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
