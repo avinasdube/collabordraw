@@ -1,8 +1,11 @@
 import React from "react";
+import Canvas from "../../components/canvas/Canvas";
 
 const Home = () => {
     return (
-        <div>Homepage</div>
+        <div>
+            <Canvas />
+        </div>
     )
 }
 
