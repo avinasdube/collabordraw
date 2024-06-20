@@ -8,13 +8,18 @@ import Layout from './layout/AppLayout';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
+import Protected from './layout/AuthLayout';
 
 function App() {
 
   const router = createHashRouter([
     {
       path: '/',
-      element: <Layout />,
+      element: (
+        <Protected authentication={true}>
+          <Layout />
+        </Protected>
+      ),
       children: [
         {
           path: '/',
@@ -28,11 +33,19 @@ function App() {
     },
     {
       path: '/login',
-      element: <Login />
+      element: (
+        <Protected authentication={false}>
+          <Login />
+        </Protected>
+      )
     },
     {
       path: '/signup',
-      element: <Signup />
+      element: (
+        <Protected authentication={false}>
+          <Signup />
+        </Protected>
+      )
     }
   ])
 
