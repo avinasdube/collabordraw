@@ -9,5 +9,33 @@ html, body {
   font-family: $bodyFont;
   font-weight: 500;
   scroll-behavior: smooth;
-  background-color: $mainBg;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+}
+
+input {
+  background-color: #0f0f0f;
+  color: $mainBg;
+  outline: none;
+  border: none;
+  padding: $spacingSmall 1rem;
+  border-radius: 4px;
+  font-family: $bodyFont;
+  width: 240px;
+}
+
+button {
+  margin-top: $spacingSmall;
+  background-color: $accentColor;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  color: $mainBg;
+  padding: 0.8rem;
+  font-size: 16px;
+  font-weight:600;
+  &:hover{
+      background-color: #006aff;
+  }
 }
