@@ -49,7 +49,7 @@ export const signup = async (req, res) => {
 // controller for login
 export const login = async (req, res) => {
     const { email, password } = req.body;
-
+    
     try {
         const user = await User.findOne({ email });
 
@@ -88,4 +88,8 @@ export const login = async (req, res) => {
     } catch (err) {
         return res.status(500).json({ error: "Internal server error !" })
     }
+}
+
+export const getLoggedInUserDetails = async (req, res) => {
+    return res.status(200).json({currentUser: req.user});
 }
