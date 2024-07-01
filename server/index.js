@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import connectDB from './config/dbconfig.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import http from 'http';
+import { Server } from 'socket.io';
 
 // importing routes
 import authRoute from './routes/authRoute.js';
@@ -13,12 +15,18 @@ dotenv.config({
     path: './.env'
 });
 
-// creating an express app
-const app = express();
-
 // defining PORT and corsOrigin
 const PORT = process.env.PORT;
 const corsOrigins = process.env.CORS_ORIGIN.split(',');
+
+// creating an express app
+const app = express();
+const httpServer = http.createServer(app);
+const io = new Server(httpServer, {
+    cors: {
+        origin: corsOrigins
+    }
+})
 
 // setting corsOptions
 const corsOptions = {
@@ -35,10 +43,18 @@ app.use(cookieParser());
 // defining routes
 app.use("/api/auth", authRoute);
 
+io.on('connection', (socket) => {
+    console.log(`New user connected : ${socket.id}`)
+
+    socket.on('createRoom', ({roomName}) => {
+        console.log(`${socket.id} created room : ${roomName}`)
+    })
+})
+
 // connecting database and starting server
 connectDB()
     .then(() => {
-        app.listen(PORT || 8800, () => {
+        httpServer.listen(PORT || 8800, () => {
             console.log(`⚙️  Server is running at port : ${PORT}`);
             app.get("/", (req, res) => {
                 res.status(201).send("Hi, from index.js ! Your server is running successfully.");
