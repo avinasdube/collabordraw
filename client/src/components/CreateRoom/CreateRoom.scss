@@ -1,0 +1,20 @@
+.create-room-container {
+    background-color: #1a1a1a;
+    border-radius: 2px;
+}
+
+.create-room-container form {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.create-room-container form .close-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: fixed;
+    top: -6%;
+    right: 0%;
+}

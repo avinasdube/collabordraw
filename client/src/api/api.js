@@ -12,3 +12,4 @@ const API = axios.create({
 
 export const signin = (inputs) => API.post(`${API_ENDPOINTS.signup}`, inputs);
 export const login = (inputs) => API.post(`${API_ENDPOINTS.login}`, inputs);
+export const getuser = () => API.get(`${API_ENDPOINTS.getuser}`)
