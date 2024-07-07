@@ -49,7 +49,7 @@ export const signup = async (req, res) => {
 // controller for login
 export const login = async (req, res) => {
     const { email, password } = req.body;
-    
+
     try {
         const user = await User.findOne({ email });
 
@@ -91,5 +91,5 @@ export const login = async (req, res) => {
 }
 
 export const getLoggedInUserDetails = async (req, res) => {
-    return res.status(200).json({currentUser: req.user});
+    return res.status(200).json({ currentUser: req.user });
 }

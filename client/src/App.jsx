@@ -2,36 +2,23 @@ import {
   createHashRouter,
   RouterProvider
 } from 'react-router-dom';
-import React, { useEffect } from 'react';
 
 import Layout from './layout/AppLayout';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-import Protected from './layout/AuthLayout';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserDetails } from './reducers/authSlice';
+import Room from './pages/Room/Room';
+import Protection from './layout/AuthLayout';
 
 function App() {
-
-  const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.auth.currentUser);
-  const status = useSelector((state) => state.auth.status);
-  //const error = useSelector((state) => state.auth.error);
-
-  useEffect(() => {
-    if (!currentUser && status === 'idle') {
-      dispatch(fetchUserDetails());
-    }
-  }, [currentUser, status, dispatch]);
 
   const router = createHashRouter([
     {
       path: '/',
       element: (
-        <Protected authentication={true}>
+        <Protection authentication={true}>
           <Layout />
-        </Protected>
+        </Protection>
       ),
       children: [
         {
@@ -41,23 +28,27 @@ function App() {
         {
           path: '/home',
           element: <Home />
+        },
+        {
+          path: '/room/:roomName',
+          element: <Room />
         }
       ]
     },
     {
       path: '/login',
       element: (
-        <Protected authentication={false}>
+        <Protection authentication={false}>
           <Login />
-        </Protected>
+        </Protection>
       )
     },
     {
       path: '/signup',
       element: (
-        <Protected authentication={false}>
+        <Protection authentication={false}>
           <Signup />
-        </Protected>
+        </Protection>
       )
     }
   ])

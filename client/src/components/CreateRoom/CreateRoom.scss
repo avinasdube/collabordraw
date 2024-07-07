@@ -1,6 +1,6 @@
 .create-room-container {
     background-color: #1a1a1a;
-    border-radius: 2px;
+    border-radius: 8px;
 }
 
 .create-room-container form {
@@ -17,4 +17,9 @@
     position: fixed;
     top: -6%;
     right: 0%;
+
+    .close-btn-img {
+        width: 15px;
+        height: 15px;
+    }
 }

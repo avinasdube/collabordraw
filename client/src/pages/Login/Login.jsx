@@ -3,9 +3,12 @@ import '../../styles/form.scss';
 import Logo from "../../components/Logo/Logo";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../api/api";
+import { useDispatch } from 'react-redux';
+import { userLogin } from "../../reducers/authSlice";
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [inputs, setInputs] = useState({
         email: "",
@@ -23,8 +26,9 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            await login(inputs);
-            navigate('/home');
+            const resp = await login(inputs);
+            dispatch(userLogin(resp?.data?.user));
+            navigate('/')
         } catch (error) {
             console.error(error);
         }

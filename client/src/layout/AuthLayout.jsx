@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
+import { getuser } from "../api/api";
+import { useSelector } from "react-redux";
 
-const Protected = ({ children, authentication = true }) => {
-    const [loading, setLoading] = useState();
+const Protection = ({ children, authentication = true }) => {
+    const currentUser = useSelector(state => state.auth.currentUser);
+
     const navigate = useNavigate();
-    const currentUser = useSelector((state) => state.auth.currentUser);
-    const status = useSelector((state) => state.auth.status);
+    const [loading, setloading] = useState(true);
 
     useEffect(() => {
-        const checkauthentication = async () => {
-
-            if (authentication && !currentUser) {
-                setLoading(true);
-                navigate('/login');
-            } else if (!authentication && currentUser) {
-                navigate('/');
-            }
-            setLoading(false);
+        if (authentication && !currentUser) {
+            navigate('/login')
+        } else if (!authentication && currentUser) {
+            navigate('/');
         }
-        checkauthentication();
+        setloading(false);
     }, [authentication, currentUser, navigate]);
 
     return loading ? <LoadingScreen /> : <>{children}</>
 }
 
-export default Protected;
+export default Protection;

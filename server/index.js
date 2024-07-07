@@ -43,11 +43,19 @@ app.use(cookieParser());
 // defining routes
 app.use("/api/auth", authRoute);
 
+let connections = [];
+
 io.on('connection', (socket) => {
+    connections.push(socket)
     console.log(`New user connected : ${socket.id}`)
 
-    socket.on('createRoom', ({roomName}) => {
-        console.log(`${socket.id} created room : ${roomName}`)
+    socket.on('createRoom', ({ roomName }) => {
+        console.log(`${socket.id} created room : ${roomName}`);
+    })
+
+    socket.on('disconnect', (reason) => {
+        connections = connections.filter((con) => con.id !== socket.id);
+        console.log(connections.map((con) => con.id))
     })
 })
 

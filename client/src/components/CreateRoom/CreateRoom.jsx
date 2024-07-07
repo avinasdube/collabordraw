@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import Modal from '../../ui/Modal';
 import './CreateRoom.scss';
-import socket from '../../socket';
+import closeIcon from '../../assets/icons/close.png';
+import { useNavigate } from 'react-router-dom';
+import socket from '../../utils/connectSocket';
 
 const CreateRoom = ({ onClose }) => {
     const [roomName, setRoomName] = useState('');
+    const navigate = useNavigate();
 
     const handleCreateRoom = (e) => {
         e.preventDefault();
@@ -13,6 +16,7 @@ const CreateRoom = ({ onClose }) => {
             roomName.trim()
             socket.emit('createRoom', { roomName });
             setRoomName('');
+            navigate(`/room/${roomName}`)
         } else {
             console.log("Error creating room !");
         }
@@ -29,7 +33,7 @@ const CreateRoom = ({ onClose }) => {
                     <input type='text' placeholder='Enter room name' value={roomName} onChange={(e) => setRoomName(e.target.value.trim())}></input>
                     <button onClick={handleCreateRoom}>Create Room</button>
                     <button className="close-btn" onClick={handleClose}>
-                        X
+                        <img className="close-btn-img" src={closeIcon} alt=""></img>
                     </button>
                 </form>
             </div>
