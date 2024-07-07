@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.canvas-container{
+    width: 100%;
+
+    .canvas-element{
+        background-color: #1a1a1a;
+        border-radius: 4px;
+    }
+}
