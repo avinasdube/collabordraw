@@ -51,11 +51,11 @@ io.on('connection', (socket) => {
 
     socket.on('createRoom', ({ roomName }) => {
         console.log(`${socket.id} created room : ${roomName}`);
+        socket.join(roomName);
     })
 
     socket.on('disconnect', (reason) => {
         connections = connections.filter((con) => con.id !== socket.id);
-        console.log(connections.map((con) => con.id))
     })
 })
 
