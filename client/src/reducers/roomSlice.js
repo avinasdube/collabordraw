@@ -13,7 +13,6 @@ const roomSlice = createSlice({
     initialState,
     reducers: {
         createRoom: (state, action) => {
-            console.log(action.payload)
             let storageRoom;
 
             if (localStorage.getItem('roomsList') === null) {
@@ -25,9 +24,22 @@ const roomSlice = createSlice({
             storageRoom.push(action.payload);
             localStorage.setItem("roomsList", JSON.stringify(storageRoom));
             state.activeRooms.push(action.payload)
+        },
+        deleteRoom: (state, action) => {
+            let storageRoom;
+
+            if (localStorage.getItem('roomsList') === null) {
+                return "No such room found !";
+            } else {
+                storageRoom = JSON.parse(localStorage.getItem("roomsList"));
+            }
+
+            storageRoom.pop(action.payload);
+            localStorage.setItem("roomsList", JSON.stringify(storageRoom));
+            state.activeRooms.pop(action.payload);
         }
     }
 })
 
-export const { createRoom } = roomSlice.actions;
+export const { createRoom, deleteRoom } = roomSlice.actions;
 export default roomSlice.reducer;
