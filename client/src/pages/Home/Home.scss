@@ -1,22 +1,77 @@
 @import '../../styles/variables';
 
-.home-container{
+.home-container {
     min-height: 60vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1em;
 
-    .message-container{
-        color:white;
-        font-size: 24px;
-    }
-
-    .action-container{
+    .welcome-section {
+        max-height: 300px;
+        max-width: 300px;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 1em;
+
+        .message-container {
+            color: white;
+            font-size: 24px;
+        }
+
+        .action-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1em;
+        }
     }
+
+    .roomlist-container {
+        max-height: 300px;
+        max-width: 300px;
+        padding: 1em 1.4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1em;
+        background-color: #1a1a1a;
+        border-radius: 10px;
+
+        .roomslist-heading {
+            display: flex;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .rooms-list {
+            display: flex;
+            gap: 1em;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .active-room {
+                width: -moz-fit-content;
+                width: fit-content;
+                border: 1px solid #0f0f0f;
+                border-radius: 4px;
+                padding: 0.5em 0.8em;
+                cursor: pointer;
+                text-decoration: none;
+                color: white;
+
+                &:hover {
+                    background-color: #0f0f0f;
+                }
+            }
+        }
+    }
+
+
 }
