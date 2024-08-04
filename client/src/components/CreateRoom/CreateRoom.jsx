@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '../../ui/Modal';
 import './CreateRoom.scss';
 import closeIcon from '../../assets/icons/close.png';
