@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import './Room.scss';
 import roomIcon from '../../assets/icons/room-icon.png';
 import Canvas from '../../components/Canvas/Canvas';
+import { deleteRoom } from '../../reducers/roomSlice';
 
 const Room = () => {
+    const dispatch = useDispatch();
     const roomName = useParams().roomName;
     const currentUser = useSelector(state => state.auth.currentUser);
     const activeRooms = useSelector((state) => state.rooms.activeRooms);
@@ -19,11 +21,22 @@ const Room = () => {
         }
     }, [currentRoom, navigate])
 
+    const handleRoomDelete = (roomName) => {
+        dispatch(deleteRoom(roomName))
+        navigate('/home');
+    }
+
     return (
         <div className="room-container">
-            <div className="room-heading">
-                <img className='room-icon' src={roomIcon} alt=''></img>
-                <div className='room-title'>{roomName}</div>
+            <div className="room-left">
+                <div className="room-heading">
+                    <img className='room-icon' src={roomIcon} alt=''></img>
+                    <div className='room-title'>{roomName}</div>
+                </div>
+                <div className="room-middle"></div>
+                <div className="room-bottom">
+                    <button onClick={handleRoomDelete}>Close Room</button>
+                </div>
             </div>
             <div className="room-body">
                 <Canvas />

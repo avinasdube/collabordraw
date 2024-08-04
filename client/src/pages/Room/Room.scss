@@ -5,22 +5,28 @@
     padding: 1rem;
     gap: 2rem;
 
-    .room-heading {
+    .room-left {
         background-color: #0f0f0f;
         padding: 0.6rem 1rem;
         border-radius: 4px;
-        font-size: 24px;
         flex: 2;
         display: flex;
-        gap: 1rem;
+        flex-direction: column;
+        justify-content: space-between;
 
-        .room-icon{
-            width: 35px;
-            height: 35px;
+        .room-heading {
+            display: flex;
+            gap: 1rem;
+            font-size: 24px;
+
+            .room-icon {
+                width: 35px;
+                height: 35px;
+            }
         }
     }
 
-    .room-body{
+    .room-body {
         flex: 7;
         width: 100%;
         background-color: #1a1a1a;
