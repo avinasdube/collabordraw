@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../../ui/Modal';
 import './CreateRoom.scss';
 import closeIcon from '../../assets/icons/close.png';
 import { useNavigate } from 'react-router-dom';
-import socket from '../../utils/connectSocket';
+import socket from '../../utils/socket.js';
+import { useDispatch } from 'react-redux';
+import { createRoom } from '../../reducers/roomSlice.js';
 
 const CreateRoom = ({ onClose }) => {
     const [roomName, setRoomName] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleCreateRoom = (e) => {
         e.preventDefault();
@@ -15,6 +18,7 @@ const CreateRoom = ({ onClose }) => {
         if (roomName) {
             roomName.trim()
             socket.emit('createRoom', { roomName });
+            dispatch(createRoom(roomName))
             setRoomName('');
             navigate(`/room/${roomName}`)
         } else {

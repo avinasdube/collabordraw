@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { createPortal } from 'react-dom';
 import './Modal.scss';
 
 const Backdrop = ({ onClose }) => {
-    return <div className="backdrop" onClick={onclose} />
+    return <div className="backdrop" onClick={onClose} />
 }
 
 const ModalOverlay = ({ children }) => {

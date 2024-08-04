@@ -18,7 +18,7 @@ const Canvas = () => {
   }, []);
 
   // Function to resize canvas and scale context
-  const resizeCanvas = () => {
+  const resizeCanvas = useCallback(() => {
     if (canvasDiv) {
       const parentDiv = document.getElementById(canvasParentId);
       const width = parentDiv.clientWidth;
@@ -30,7 +30,7 @@ const Canvas = () => {
         context.scale(DPR, DPR);
       }
     }
-  };
+  }, [DPR, canvasDiv, context])
 
   // Resize canvas on component mount and window resize
   useEffect(() => {
@@ -39,14 +39,14 @@ const Canvas = () => {
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, [context, canvasDiv]);
+  }, [context, resizeCanvas, canvasDiv]);
 
   let mouseDown = false;
 
   const onMouseDown = (e) => {
     if (context) {
       const { clientX, clientY } = e;
-      x = clientX;
+      x = clientX - 15;
       y = clientY - canvasDiv.offsetTop;
       context.moveTo(x, y);
       mouseDown = true;
@@ -62,9 +62,10 @@ const Canvas = () => {
   const onMouseMove = (e) => {
     if (mouseDown && context) {
       const { clientX, clientY } = e;
-      const newX = clientX;
+      const newX = clientX - 15;
       const newY = clientY - canvasDiv.offsetTop;
       context.lineTo(newX, newY);
+      context.strokeStyle = 'white';
       context.stroke();
       x = newX;
       y = newY;
