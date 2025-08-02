@@ -169,6 +169,7 @@ We encourage contributions in the form of pull requests (PRs). To submit a code 
   
             
             npm run install-client
+            npm run setup-client
             npm run start-client
             
         The above commands will install all client-side dependencies and run it in browser.
@@ -179,6 +180,7 @@ We encourage contributions in the form of pull requests (PRs). To submit a code 
      
             
             npm run install-server
+            npm run setup-server
             npm run start-server
             
         Above commands will install all server-side dependencies and start your server.
@@ -306,7 +308,7 @@ If you've contributed to our documentation, please add your name to the list of 
 ## Contributors
 
 - Your Name ([Your GitHub Username](https://github.com/your-github-username))
-- Another Contributor
+- Sailash (Sailash05) (sailashs2005@gmail.com)
 ```
 
 
