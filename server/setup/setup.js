@@ -46,7 +46,7 @@ const generateEnv = (isModified=false) => {
 # ==================================================
 
 # Port on which the backend server will run
-PORT=5000
+PORT=4000
 
 # MongoDB connection string
 # Replace 'collabordraw' with your preferred database name if needed
