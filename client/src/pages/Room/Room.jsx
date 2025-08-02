@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import './Room.scss';
 import roomIcon from '../../assets/icons/room-icon.png';
-import Canvas from '../../components/Canvas/Canvas';
+import Canvas from '../../components/canvas/Canvas';
 import { deleteRoom } from '../../reducers/roomSlice';
 
 const Room = () => {
