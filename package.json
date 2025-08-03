@@ -5,10 +5,12 @@
     "main": "index.js",
     "scripts": {
         "install-server": "cd server && npm install",
+        "setup-server": "cd server && node setup/setup.js",
         "start-server": "cd server && node index.js",
         "install-client": "cd client && npm install",
+        "setup-client": "cd client && node src/setup/setup.js",
         "build-client": "cd client && npm run build",
-        "start-client": "cd client && npm run start"
+        "start-client": "cd client && npm run dev"
     },
     "keywords": [],
     "author": "",
